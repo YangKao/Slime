@@ -16,5 +16,6 @@ deploy:
   target_branch: gh-pages
   email: keao.yang@yahoo.com
   name: YangKao
+  fqdn: descartes.life
   on:
     branch: master
