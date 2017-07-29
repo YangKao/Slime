@@ -241,3 +241,7 @@ blockquote {
   color: #aaaaaa;
   border-color: #aaaaaa;
 }
+
+#post > ol {
+   list-style-type: circle;
+}
