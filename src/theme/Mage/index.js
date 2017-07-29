@@ -83,7 +83,6 @@ class Home extends React.Component {
     return (
       <div id="content">
         <header>
-          <img src="./logo.svg" alt="" width="100px"/>
           <div id="title">
             <h1><Link to="/">{this.props.title}</Link></h1>
           </div>
