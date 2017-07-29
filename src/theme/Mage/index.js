@@ -27,7 +27,7 @@ class Post extends React.Component {
     await this.setStateAsync({
       name: props.name,
       content: md.render(text),
-      date: props.date.toString()
+      date: props.date
     });
   }
 
@@ -41,13 +41,16 @@ class Post extends React.Component {
   render() {
     if(this.state.name !== '') {
       return (
-        <div>
+        <div id="outter">
           <header>
+            <div id="title">
+              <h1><Link to="/">{this.props.title}</Link></h1>
+            </div>
             <div id="postTitle">
               <h1>{this.state.name}</h1>
             </div>
             <div id="postMeta">
-              {this.state.date}
+              {this.state.date.getFullYear()}年{this.state.date.getMonth() + 1}月{this.state.date.getDate()}日
             </div>
           </header>
           <div id="post" dangerouslySetInnerHTML={{__html: this.state.content || '加载中'}}>
@@ -70,25 +73,27 @@ class Home extends React.Component {
     for(let i = 0;i < this.props.posts.length;i++) {
       const post = this.props.posts[i];
       posts.push(
-        <Link to={`/post/${post.id}`} key={post.name}>
-          <li>
+        <li>
+          <Link to={`/post/${post.id}`} key={post.name}>
             <span id="postName">{post.name}</span>
-            <span id="postDate">{post.date.toString()}</span>
-          </li>
-        </Link>
+          </Link>
+        </li>
       );
     }
     return (
       <div id="content">
         <header>
+          <img src="./logo.svg" alt="" width="100px"/>
           <div id="title">
-            <h1>{this.props.title}</h1>
+            <h1><Link to="/">{this.props.title}</Link></h1>
           </div>
+          <hr/>
           <div id="description">
             <p dangerouslySetInnerHTML={{__html: md.render(this.props.description)}}>
             </p>
           </div>
         </header>
+        <hr/>
         <div id="content">
           {
             posts
@@ -114,7 +119,7 @@ export default class App extends React.Component {
             });
             {/* console.log(post ? post.src : ''); */}
             return (
-              <Post src={post ? post.src : ''} name={post ? post.name : ''} date={post ? post.date : new Date()}/>
+              <Post title={self.props.title} src={post ? post.src : ''} name={post ? post.name : ''} date={post ? post.date : new Date()}/>
             );
           }}></Route>
         </div>
