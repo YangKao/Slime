@@ -23,8 +23,10 @@ class Page extends React.Component {
   }
   async componentDidMount() {
     const raw = await fetch('https://api.github.com/repos/YangKao/math/contents/');
+    const raw2 = await fetch('https://api.github.com/repos/YangKao/glblog/contents/');
     const json = await raw.json();
-    const posts = json.map(item => {
+    const json2 = await raw2.json();
+    const posts = (json.concat(json2)).map(item => {
       const info = item.name.split('-');
       const date = new Date();
       date.setFullYear(info[0]);
