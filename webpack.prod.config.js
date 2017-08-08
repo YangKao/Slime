@@ -15,6 +15,12 @@ module.exports = {
             plugins: ['transform-decorators-legacy']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: {
+          loader: 'css-loader'
+        }
       }
     ]
   },
