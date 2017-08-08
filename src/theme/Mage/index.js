@@ -2,8 +2,10 @@ import React from 'react';
 import {HashRouter, Route, Link} from 'react-keeper';
 import mD from 'markdown-it';
 import mk from 'markdown-it-mathjax';
+import markdownItHighlight from 'markdown-it-highlight';
 const md = mD();
 md.use(mk());
+md.use(markdownItHighlight)
 
 class Post extends React.Component {
   constructor() {
