@@ -34,7 +34,9 @@ module.exports = {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      test: /\.js($&#124;\?)/i
+    })
   ],
   externals: 'MathJax',
   output: {
