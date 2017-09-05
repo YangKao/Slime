@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './theme/Mage';
 import Config from '../config';
-
 import mD from 'markdown-it';
 import mk from 'markdown-it-mathjax';
 const md = mD();
 md.use(mk());
+
+window.particlesJS.load('background', '/particles.json', function() {});
 
 class Page extends React.Component {
   constructor() {

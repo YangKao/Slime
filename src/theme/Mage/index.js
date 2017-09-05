@@ -5,7 +5,7 @@ import mk from 'markdown-it-mathjax';
 import markdownItHighlight from 'markdown-it-highlight';
 const md = mD();
 md.use(mk());
-md.use(markdownItHighlight)
+md.use(markdownItHighlight);
 
 class Post extends React.Component {
   constructor() {
@@ -75,7 +75,7 @@ class Home extends React.Component {
     for(let i = 0;i < this.props.posts.length;i++) {
       const post = this.props.posts[i];
       posts.push(
-        <li>
+        <li key={i}>
           <Link to={`/post/${post.id}`} key={post.name}>
             <span id="postName">{post.name}</span>
           </Link>

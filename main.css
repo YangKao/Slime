@@ -149,6 +149,9 @@ h1 {
 
 #app {
   padding: 0px 0px 0px 6%;
+  position: absolute;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 #description {
@@ -243,4 +246,12 @@ blockquote {
 
 #post > ol {
    list-style-type: circle;
+}
+
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%
 }
