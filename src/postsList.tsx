@@ -1,15 +1,15 @@
 import Config from "./config"
 import {PromiseBuilder} from "./promiseBuilder/promiseBuilder";
-import {getPosts, Post} from "./network/github";
+import {getPosts, IPost} from "./network/github";
 import * as React from "react";
 
-export function PostsList() {
+export function PostsList({navigateTo}) {
     // @ts-ignore
     const allPosts = Promise.all(
         Config.repos.map(item => getPosts(item))
     ).then(
         items => items.reduce((sum, item) => sum.concat(item), [])
-    ) as Promise<Post[]>;
+    ) as Promise<IPost[]>;
 
     return <PromiseBuilder
         promise={allPosts}
@@ -29,7 +29,9 @@ export function PostsList() {
                         {
                             post.map(item => {
                                 return <li key={item.id}>
-                                    {item.name}
+                                    <a onClick={() => {navigateTo(item)}}>
+                                        {item.name}
+                                    </a>
                                 </li>
                             })
                         }

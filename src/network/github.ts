@@ -1,4 +1,4 @@
-export interface Post {
+export interface IPost {
     name: string,
     src: string,
     id: string,
@@ -6,7 +6,7 @@ export interface Post {
 }
 
 // @ts-ignore
-export const getPosts = async (repo: string): Post[] => {
+export const getPosts = async (repo: string): IPost[] => {
     const raw = await fetch(`https://api.github.com/repos/${repo}/contents/`);
     const json = await raw.json();
 
@@ -21,8 +21,8 @@ export const getPosts = async (repo: string): Post[] => {
             src: item.download_url,
             id: item.sha,
             date: date
-        } as Post;
-    }) as Post[];
+        } as IPost;
+    }) as IPost[];
 
     posts.sort((a, b) => {
         return a.date.getTime() - b.date.getTime();
