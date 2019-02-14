@@ -3,13 +3,9 @@ node_js:
   - "7"
 install:
   - npm install
-  - npm run build
-  - mkdir deploy
-  - cp -r dist deploy/
-  - cp index.html deploy/
-  - cp main.css deploy/
-  - cp particles.min.js deploy/
-  - cp particles.json deploy/
+  - npm install parcel -g
+  - parcel build index.html
+  - cp -r dist deploy
 deploy:
   provider: pages
   skip_cleanup: true
