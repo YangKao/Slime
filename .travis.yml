@@ -5,11 +5,7 @@ install:
   - npm install
   - npm run build
   - mkdir deploy
-  - cp -r dist deploy/
-  - cp index.html deploy/
-  - cp main.css deploy/
-  - cp particles.min.js deploy/
-  - cp particles.json deploy/
+  - cp -r dist deploy
 deploy:
   provider: pages
   skip_cleanup: true
