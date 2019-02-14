@@ -3,8 +3,8 @@ node_js:
   - "7"
 install:
   - npm install
-  - npm run build
-  - mkdir deploy
+  - npm install parcel -g
+  - parcel build index.html
   - cp -r dist deploy
 deploy:
   provider: pages
